@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA World Cup 2026 - Global Broadcasters Directory</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --bg-card: rgba(20, 20, 25, 0.85);
+            --gold-primary: #d4af37;
+            --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+            --text-white: #ffffff;
+            --text-muted: #a0a0aa;
+            --border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            padding-bottom: 20px;
+        }
+
+        /* Header Section with Blurred Background Image */
+        header {
+            position: relative;
+            background-image: url('https://cdn.uc.assets.prezly.com/b8e3c493-155c-4273-b38b-fe6d094a3b76/-/preview/-/format/auto/fifa-unveils-official-brand-for-2026-fifa-world-cup-header-image');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--gold-primary);
+            overflow: hidden;
+        }
+
+        /* Overlay blur to make text readable */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(10, 10, 12, 0.4) 0%, rgba(10, 10, 12, 0.95) 100%);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 1;
+        }
+
+        /* Bring content above the blurred overlay */
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .fwc-logo {
+            max-width: 130px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.7));
+        }
+
+        .logo-text {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            color: #e4e4e7;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 30px auto 10px auto;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 25px;
+            background-color: rgba(20, 20, 25, 0.95);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: var(--text-white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .search-input:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .country-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .country-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .country-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-white);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .broadcaster-list {
+            list-style: none;
+        }
+
+        .broadcaster-item {
+            margin-bottom: 12px;
+            padding-left: 10px;
+            border-left: 2px solid var(--gold-primary);
+        }
+
+        .provider-name {
+            font-weight: 600;
+            color: #f3e5ab;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .no-results {
+            text-align: center;
+            color: var(--text-muted);
+            grid-column: 1 / -1;
+            padding: 40px;
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            background-color: #0e0e12;
+            text-align: center;
+        }
+
+        .courtesy-box {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .courtesy-box a {
+            color: var(--gold-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .courtesy-box a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .logo-text { font-size: 2rem; }
+            .directory-grid { grid-template-columns: 1fr; }
+            header { padding: 40px 15px; }
+            .fwc-logo { max-width: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <!-- Official Emblem Added Here -->
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/17/2026_FIFA_World_Cup_emblem.svg/960px-2026_FIFA_World_Cup_emblem.svg.png" alt="FIFA World Cup 2026 Logo" class="fwc-logo">
+            
+            <div class="logo-text">FIFA World Cup 2026</div>
+            <p>Global Broadcasters & Official Media Rights Directory</p>
+            
+            <div class="search-container">
+                <input type="text" id="searchBox" class="search-input" placeholder="Search country or TV channels...">
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="directory-grid" id="directoryGrid">
+            
+            <!-- International Travel -->
+            <div class="country-card" data-country="international in-flight cruise travel" data-channels="sport24">
+                <div class="country-name">In-Flight / Cruise Ships</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Sport24</div></li>
+                </ul>
+            </div>
+
+            <!-- A -->
+            <div class="country-card" data-country="afghanistan" data-channels="atn ariana news ariana television">
+                <div class="country-name">Afghanistan</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">ATN / Ariana News / Ariana Television</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="albania" data-channels="tv klan supersport">
+                <div class="country-name">Albania</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TV Klan / SuperSport</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="algeria" data-channels="entv">
+                <div class="country-name">Algeria</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">ENTV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="andorra" data-channels="rtve m6 mediapro dazn">
+                <div class="country-name">Andorra</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTVE / M6 / Mediapro / DAZN</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="angola" data-channels="tpa z sports">
+                <div class="country-name">Angola</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TPA / Z Sports</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="argentina" data-channels="telefe tv publica tyc sports dgo dsports">
+                <div class="country-name">Argentina</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Telefe / TV Pública / TyC Sports</div></li>
+                    <li class="broadcaster-item"><div class="provider-name">DGO / DSPORTS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="armenia" data-channels="fast sports">
+                <div class="country-name">Armenia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Fast Sports</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="aruba" data-channels="telearuba dgo dsports">
+                <div class="country-name">Aruba</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Telearuba / DGO / DSPORTS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="australia" data-channels="sbs sbs on demand">
+                <div class="country-name">Australia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">SBS / SBS On Demand</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="austria" data-channels="orf servustv magenta sport osterreichischer rundfunk servustv on">
+                <div class="country-name">Austria</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">ORF / ServusTV / Magenta Sport</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="azerbaijan" data-channels="itv cbc sport ictimai tv">
+                <div class="country-name">Azerbaijan</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">İTV / CBC Sport / Ictimai TV</div></li>
+                </ul>
+            </div>
+
+            <!-- B -->
+            <div class="country-card" data-country="bangladesh" data-channels="btv t sports somoy tv toffee bioscope my robi screen">
+                <div class="country-name">Bangladesh</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">BTV / T Sports / Somoy TV / Toffee / Bioscope+ / My Robi / Screen</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="barbados" data-channels="caribbean broadcasting corporation dgo dsports">
+                <div class="country-name">Barbados</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Caribbean Broadcasting Corporation / DGO / DSPORTS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="belarus" data-channels="sport tv">
+                <div class="country-name">Belarus</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Sport TV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="belgium" data-channels="vrt rtbf auvio sporza tipik vrt max vrtcanvas">
+                <div class="country-name">Belgium</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">VRT / RTBF / Auvio / Sporza / Tipik / VRT Max / VRTCanvas</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="benin" data-channels="benin tv">
+                <div class="country-name">Benin</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Bénin TV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="bermuda" data-channels="bermuda broadcasting">
+                <div class="country-name">Bermuda</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Bermuda Broadcasting</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="bolivia" data-channels="red uno unitel entel tigo sports">
+                <div class="country-name">Bolivia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Red Uno / Unitel / Entel / Tigo Sports</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="bosnia and herzegovina" data-channels="rtvfbih arena sport">
+                <div class="country-name">Bosnia and Herzegovina</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTVFBIH / Arena Sport</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="brazil" data-channels="grupo globo cazetv sbt n sports globoplay sportv">
+                <div class="country-name">Brazil</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Grupo Globo (Globoplay/SporTV) / CazéTV / SBT / N Sports</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="brunei" data-channels="rtb">
+                <div class="country-name">Brunei</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTB</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="bulgaria" data-channels="bnt">
+                <div class="country-name">Bulgaria</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">BNT</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="burkina faso" data-channels="rtb">
+                <div class="country-name">Burkina Faso</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTB</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="burundi" data-channels="rtnb">
+                <div class="country-name">Burundi</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTNB</div></li>
+                </ul>
+            </div>
+
+            <!-- C -->
+            <div class="country-card" data-country="cambodia" data-channels="hang meas">
+                <div class="country-name">Cambodia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Hang Meas</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="cameroon" data-channels="crtv canal 2 msi">
+                <div class="country-name">Cameroon</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">CRTV / Canal 2 / MSI</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="canada" data-channels="bell media rds tsn1 tsn ctv">
+                <div class="country-name">Canada</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Bell Media (TSN1 / TSN / RDS / CTV)</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="cape verde" data-channels="rtc">
+                <div class="country-name">Cape Verde</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTC</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="caribbean" data-channels="rush sports dsports">
+                <div class="country-name">Caribbean</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Rush Sports (English) / DSports (Spanish)</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="chile" data-channels="chilevision dgo dsports">
+                <div class="country-name">Chile</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Chilevisión / DGO / DSPORTS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="chad" data-channels="tele tchad">
+                <div class="country-name">Chad</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Télé Tchad</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="china taiwan chinese taipei" data-channels="cmg migu xiaohongshu elta sports 1 ebc ttv">
+                <div class="country-name">China / Taiwan (Chinese Taipei)</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">CMG / Migu / Xiaohongshu / ELTA Sports 1 / EBC / TTV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="colombia" data-channels="caracol rcn win sports dgo dsports caracol television rcn television sa">
+                <div class="country-name">Colombia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Caracol Television / RCN Television SA / Win Sports / DGO / DSPORTS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="congo" data-channels="tele congo">
+                <div class="country-name">Congo</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Télé Congo</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="cook islands" data-channels="vaka tv">
+                <div class="country-name">Cook Islands</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Vaka TV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="costa rica" data-channels="teletica tigo sports">
+                <div class="country-name">Costa Rica</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Teletica / Tigo Sports</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="croatia" data-channels="hrt hrti">
+                <div class="country-name">Croatia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">HRT / HRTi</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="cuba" data-channels="icrt">
+                <div class="country-name">Cuba</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">ICRT</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="curacao" data-channels="nos pais television dgo dsports">
+                <div class="country-name">Curaçao</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Nos Pais Television / DGO / DSPORTS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="cyprus" data-channels="sigma tv">
+                <div class="country-name">Cyprus</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Sigma TV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="czechia" data-channels="ct tv nova">
+                <div class="country-name">Czechia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">ČT / TV Nova</div></li>
+                </ul>
+            </div>
+
+            <!-- D -->
+            <div class="country-card" data-country="democratic republic of congo" data-channels="rtnc">
+                <div class="country-name">DR Congo</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTNC</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="denmark" data-channels="dr tv2">
+                <div class="country-name">Denmark</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">DR / TV2</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="dominican republic" data-channels="cdn 37 pio deportes">
+                <div class="country-name">Dominican Republic</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">CDN 37 / Pio Deportes</div></li>
+                </ul>
+            </div>
+
+            <!-- E -->
+            <div class="country-card" data-country="ecuador" data-channels="teleamazonas dgo dsports">
+                <div class="country-name">Ecuador</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Teleamazonas / DGO / DSPORTS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="el salvador" data-channels="tcs tigo sports canal 4 tv tigo sports app">
+                <div class="country-name">El Salvador</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TCS (Canal 4 TV) / Tigo Sports & App</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="estonia" data-channels="tv3 estonia err">
+                <div class="country-name">Estonia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TV3 Estonia / ERR</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="eswatini" data-channels="eswatini tv">
+                <div class="country-name">Eswatini</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Eswatini TV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="ethiopia" data-channels="hagerie tv">
+                <div class="country-name">Ethiopia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Hagerie TV</div></li>
+                </ul>
+            </div>
+
+            <!-- F -->
+            <div class="country-card" data-country="faroe islands" data-channels="kvf">
+                <div class="country-name">Faroe Islands</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">KvF</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="fiji" data-channels="fbc la 1 fbc sports">
+                <div class="country-name">Fiji</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">FBC / FBC Sports / LA 1</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="finland" data-channels="yle mtv3 mtv urheilu 1">
+                <div class="country-name">Finland</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Yle / MTV3 / MTV Urheilu 1</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="france" data-channels="m6 bein sports la 1ere antenne reunion">
+                <div class="country-name">France (Metropolitan & Ultramarine)</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">M6 / beIN Sports / La 1ère / Antenne Réunion</div></li>
+                </ul>
+            </div>
+
+            <!-- G -->
+            <div class="country-card" data-country="gabon" data-channels="rtg">
+                <div class="country-name">Gabon</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTG</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="gambia" data-channels="grts">
+                <div class="country-name">Gambia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">GRTS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="georgia" data-channels="rustavi 2 setanta sports">
+                <div class="country-name">Georgia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Rustavi 2 / Setanta Sports</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="germany" data-channels="ard zdf magenta sport das erste">
+                <div class="country-name">Germany</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">ARD (Das Erste) / ZDF / Magenta Sport</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="ghana" data-channels="gbc multimedia group utv ghone channelone ignite media media general max tv woezor sporty tv">
+                <div class="country-name">Ghana</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">GBC / Multimedia Group / UTV / GHOne / Sporty TV / Max TV / Media General</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="greece" data-channels="ert">
+                <div class="country-name">Greece</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">ERT</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="guatemala" data-channels="albavision tigo sports canal 11 canal 3 tigo sports app">
+                <div class="country-name">Guatemala</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Albavisión (Canal 3 / Canal 11) / Tigo Sports & App</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="guinea" data-channels="rtg">
+                <div class="country-name">Guinea</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTG</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="guyana" data-channels="enet dgo dsports">
+                <div class="country-name">Guyana</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">ENet / DGO / DSPORTS</div></li>
+                </ul>
+            </div>
+
+            <!-- H -->
+            <div class="country-card" data-country="haiti" data-channels="tnh canal+">
+                <div class="country-name">Haiti</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TNH / Canal+</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="honduras" data-channels="televicentro tigo sports compañia televisora hondureña">
+                <div class="country-name">Honduras</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Televicentro (Compañia Televisora Hondureña) / Tigo Sports</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="hong kong" data-channels="pccw">
+                <div class="country-name">Hong Kong</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">PCCW</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="hungary" data-channels="mtva m4 sport">
+                <div class="country-name">Hungary</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">MTVA / M4 Sport</div></li>
+                </ul>
+            </div>
+
+            <!-- I -->
+            <div class="country-card" data-country="iceland" data-channels="ruv ruv2">
+                <div class="country-name">Iceland</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RÚV / RUV2</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="india" data-channels="unite8 sports doordarshan sports18 jiocinema">
+                <div class="country-name">India</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Viacom18 (Sports18 / JioCinema) / Doordarshan (DD)</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="indonesia" data-channels="tvri maxstream fola play">
+                <div class="country-name">Indonesia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TVRI / MAXstream / Fola Play</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="iran" data-channels="irib gem tv persiana sports grand sport">
+                <div class="country-name">Iran</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">IRIB / GEM TV / Persiana Sports / Grand Sport</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="ireland" data-channels="rte">
+                <div class="country-name">Ireland</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTÉ</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="israel" data-channels="kan charlton kan box makan">
+                <div class="country-name">Israel</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">KAN (KAN BOX / MAKAN) / Charlton</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="italy san marino" data-channels="rai dazn">
+                <div class="country-name">Italy / San Marino</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RAI / DAZN</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="ivory coast" data-channels="rti nci">
+                <div class="country-name">Ivory Coast</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTI / NCI</div></li>
+                </ul>
+            </div>
+
+            <!-- J -->
+            <div class="country-card" data-country="jamaica" data-channels="tvj">
+                <div class="country-name">Jamaica</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TVJ</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="japan" data-channels="nhk nippon tv fuji tv dazn">
+                <div class="country-name">Japan</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">NHK / Nippon TV / Fuji TV / DAZN</div></li>
+                </ul>
+            </div>
+
+            <!-- K -->
+            <div class="country-card" data-country="kazakhstan" data-channels="qaztrk">
+                <div class="country-name">Kazakhstan</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">QAZTRK</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="kenya" data-channels="kbc sporty tv azam tv">
+                <div class="country-name">Kenya</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">KBC / SportyTV / Azam TV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="kosovo" data-channels="rtk tv vala arena sport">
+                <div class="country-name">Kosovo</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTK / TV Vala / Arena Sport</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="kyrgyzstan" data-channels="ktrk beeline">
+                <div class="country-name">Kyrgyzstan</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">KTRK / Beeline</div></li>
+                </ul>
+            </div>
+
+            <!-- L -->
+            <div class="country-card" data-country="laos" data-channels="unitel">
+                <div class="country-name">Laos</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Unitel</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="latvia" data-channels="tv3 latvia">
+                <div class="country-name">Latvia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TV3 Latvia</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="liberia" data-channels="lbs">
+                <div class="country-name">Liberia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">LBS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="liechtenstein switzerland" data-channels="srg ssr rsi rts srf">
+                <div class="country-name">Liechtenstein / Switzerland</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">SRG SSR (RSI / RTS / SRF)</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="lithuania" data-channels="tv3 lithuania">
+                <div class="country-name">Lithuania</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TV3 Lithuania</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="luxembourg" data-channels="rtbf ard zdf">
+                <div class="country-name">Luxembourg</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTBF / ARD / ZDF</div></li>
+                </ul>
+            </div>
+
+            <!-- M -->
+            <div class="country-card" data-country="macau" data-channels="tdm tdm sport">
+                <div class="country-name">Macau</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TDM / TDM Sport</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="madagascar" data-channels="tvm">
+                <div class="country-name">Madagascar</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TVM</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="malawi tanzania rwanda uganda zambia zimbabwe" data-channels="azam tv tbc rba ubc znbc mackfen tv sun sports tv">
+                <div class="country-name">Malawi / Tanzania / Rwanda / Uganda / Zambia / Zimbabwe</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Azam TV (Regional Broadcast networks included)</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="malaysia" data-channels="rtm unifi tv astro sooka tv2 tv okey">
+                <div class="country-name">Malaysia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTM (TV2, TV Okey) / Unifi TV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="maldives" data-channels="psm medianet">
+                <div class="country-name">Maldives</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">PSM / Medianet</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="mali" data-channels="ortm">
+                <div class="country-name">Mali</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">ORTM</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="malta" data-channels="television malta tvmsport+">
+                <div class="country-name">Malta</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Television Malta / TVMsport+</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="mauritius" data-channels="mbc">
+                <div class="country-name">Mauritius</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">MBC</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="mena middle east north africa qatar morocco" data-channels="bein sports alkass sports snrt">
+                <div class="country-name">MENA (Qatar, Morocco, etc.)</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">beIN Sports / Alkass Sports / SNRT (Morocco)</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="mexico" data-channels="televisa univision tv azteca canal 5 las estrellas tudn vix">
+                <div class="country-name">Mexico</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TelevisaUnivision (Canal 5, Las Estrellas, TUDN, ViX) / TV Azteca</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="moldova" data-channels="jurnal tv we sport tv">
+                <div class="country-name">Moldova</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Jurnal TV / We Sport TV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="mongolia" data-channels="edutv national television suld tv mnb mobihome voo">
+                <div class="country-name">Mongolia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">EduTV / National Television / Suld TV / MNB / mobihome VOO</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="montenegro north macedonia serbia slovenia" data-channels="rtcg arena sport ptc rtv slo">
+                <div class="country-name">Montenegro / North Macedonia / Serbia / Slovenia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Arena Sport / RTCG (Montenegro) / PTC (Serbia) / RTV SLO (Slovenia)</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="mozambique" data-channels="tvm miramar z sports">
+                <div class="country-name">Mozambique</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TVM / Miramar / Z Sports</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="myanmar" data-channels="mytel canal+">
+                <div class="country-name">Myanmar</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Mytel / Canal+</div></li>
+                </ul>
+            </div>
+
+            <!-- N -->
+            <div class="country-card" data-country="namibia" data-channels="nbc">
+                <div class="country-name">Namibia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">NBC</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="nepal" data-channels="himalaya sports dgo">
+                <div class="country-name">Nepal</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Himalaya Sports / Dgo</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="netherlands" data-channels="nos">
+                <div class="country-name">Netherlands</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">NOS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="new zealand" data-channels="tvnz tvnz 1 tvnz+ pay pass">
+                <div class="country-name">New Zealand</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TVNZ (TVNZ 1 / TVNZ+ / Pay Pass)</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="nicaragua" data-channels="grupo ratensa tigo sports">
+                <div class="country-name">Nicaragua</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Grupo Ratensa / Tigo Sports</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="niger" data-channels="rtn">
+                <div class="country-name">Niger</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTN</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="nigeria" data-channels="sportytv startimes">
+                <div class="country-name">Nigeria</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">SportyTV / StarTimes</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="norway" data-channels="nrk tv2 nonrk">
+                <div class="country-name">Norway</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">NRK / TV2</div></li>
+                </ul>
+            </div>
+
+            <!-- P -->
+            <div class="country-card" data-country="pacific islands palau papua new guinea" data-channels="digicel pncc">
+                <div class="country-name">Pacific Islands (Palau / PNG)</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Digicel / PNCC</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="pakistan" data-channels="ptv sports tapmad">
+                <div class="country-name">Pakistan</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">PTV Sports / Tapmad</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="panama" data-channels="rpc costvn media tigo sports tvmax tvn panama tvn pass">
+                <div class="country-name">Panama</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RPC / TVMAX / TVN Media / Tigo Sports / TVN Pass</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="paraguay" data-channels="trece gen tv popu tv unicanal">
+                <div class="country-name">Paraguay</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Trece / GEN TV / Popu TV / Unicanal</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="peru" data-channels="america television dgo dsports">
+                <div class="country-name">Peru</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">América Televisión / DGO / DSPORTS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="philippines" data-channels="aleph arena tap dmv cignal ppv">
+                <div class="country-name">Philippines</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Aleph Arena / TAP DMV / Cignal PPV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="poland" data-channels="tvp tvp sport">
+                <div class="country-name">Poland</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TVP / TVP Sport</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="portugal" data-channels="rtp sic tvi livemodetv sport tv">
+                <div class="country-name">Portugal</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTP / SIC / TVI / LiveModeTV / Sport TV</div></li>
+                </ul>
+            </div>
+
+            <!-- R -->
+            <div class="country-card" data-country="romania" data-channels="antena">
+                <div class="country-name">Romania</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Antena</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="russia" data-channels="match tv kinopoisk">
+                <div class="country-name">Russia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Match TV / Kinopoisk</div></li>
+                </ul>
+            </div>
+
+            <!-- S -->
+            <div class="country-card" data-country="saint lucia" data-channels="winners sports tv">
+                <div class="country-name">Saint Lucia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Winners Sports TV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="senegal" data-channels="rts">
+                <div class="country-name">Senegal</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="seychelles" data-channels="sbc">
+                <div class="country-name">Seychelles</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">SBC</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="singapore" data-channels="mediacorp mewatch channel 5">
+                <div class="country-name">Singapore</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Mediacorp (meWATCH / Channel 5)</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="slovakia" data-channels="stvr rtv joj">
+                <div class="country-name">Slovakia</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">STVR / RTV JOJ</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="solomon islands" data-channels="ttv">
+                <div class="country-name">Solomon Islands</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TTV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="south africa" data-channels="sabc sportytv">
+                <div class="country-name">South Africa</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">SABC / SportyTV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="south america uruguay venezuela trinidad tobago" data-channels="dsports disney+ dgo televen canal 5 antel tv">
+                <div class="country-name">South America (Uruguay, Venezuela, etc.)</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">DSports / Disney+ / DGO / Televen / Antel TV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="south korea republic of korea" data-channels="jtbc kbs naver sports chzzk">
+                <div class="country-name">South Korea</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">JTBC / KBS / NAVER Sports / CHZZK</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="spain" data-channels="rtve mediapro dazn play la 1">
+                <div class="country-name">Spain</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTVE (La 1 / Play) / Mediapro / DAZN</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="sri lanka" data-channels="mtv peotv dialog tv">
+                <div class="country-name">Sri Lanka</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">MTV / PEOTV / Dialog TV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="sub saharan africa" data-channels="new world tv supersport">
+                <div class="country-name">Sub-Saharan Africa</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">New World TV / SuperSport</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="suriname" data-channels="stvs satv dgo dsports">
+                <div class="country-name">Suriname</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">STVS / SATV / DGO / DSPORTS</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="sweden" data-channels="svt tv4 svt2">
+                <div class="country-name">Sweden</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">SVT (SVT2) / TV4</div></li>
+                </ul>
+            </div>
+
+            <!-- T -->
+            <div class="country-card" data-country="tajikistan" data-channels="varzish tv">
+                <div class="country-name">Tajikistan</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Varzish TV</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="thailand" data-channels="monomax sports">
+                <div class="country-name">Thailand</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">MONOMAX Sports</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="timor leste" data-channels="rttle to">
+                <div class="country-name">Timor-Leste</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">RTTLE / TO</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="togo" data-channels="tvt">
+                <div class="country-name">Togo</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TVT</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="turkey" data-channels="trt">
+                <div class="country-name">Turkey</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">TRT</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="turkmenistan" data-channels="turkmenistan sport">
+                <div class="country-name">Turkmenistan</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Turkmenistan Sport</div></li>
+                </ul>
+            </div>
+
+            <!-- U -->
+            <div class="country-card" data-country="ukraine" data-channels="megogo">
+                <div class="country-name">Ukraine</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">MEGOGO</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="united kingdom scotland" data-channels="bbc itv stv bbc one bbc iplayer itv1 itvx">
+                <div class="country-name">United Kingdom (UK / Scotland)</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">BBC (BBC One/iPlayer) / ITV (ITV1/ITVX) / STV Scotland</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="united states usa puerto rico" data-channels="fox sports telemundo peacock universo telemundo app fox telemundo network">
+                <div class="country-name">United States (USA / Puerto Rico)</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">FOX Sports (FOX, FS1) / Telemundo Network (Peacock, Universo, App)</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="uzbekistan" data-channels="zo'r tv mtrk">
+                <div class="country-name">Uzbekistan</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">Zo'r TV / MTRK</div></li>
+                </ul>
+            </div>
+
+            <!-- V -->
+            <div class="country-card" data-country="vanuatu" data-channels="vbtc">
+                <div class="country-name">Vanuatu</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">VBTC</div></li>
+                </ul>
+            </div>
+
+            <div class="country-card" data-country="vietnam" data-channels="vtv">
+                <div class="country-name">Vietnam</div>
+                <ul class="broadcaster-list">
+                    <li class="broadcaster-item"><div class="provider-name">VTV</div></li>
+                </ul>
+            </div>
+
+            <div class="no-results" id="noResults">No countries or channels match your search.</div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="courtesy-box">
+            <p><strong>Data Courtesy & Source Credits:</strong></p>
+            <p>Broadcasting rights data compiled directly from open-source intelligence on 
+                <a href="https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_broadcasting_rights" target="_blank">Wikipedia (FIFA World Cup Broadcasting Rights)</a> 
+                and official streaming media data elements published by 
+                <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/draw-official-broadcasters" target="_blank">FIFA Official Media Draw</a>.
+            </p>
+            <p style="margin-top: 15px; font-size: 0.8rem; color: #52525b;">&copy; 2026 Sports Hub Directory. Built for Football Fans Globally.</p>
+        </div>
+    </footer>
+
+    <script>
+        const searchBox = document.getElementById('searchBox');
+        const cards = document.querySelectorAll('.country-card');
+        const noResults = document.getElementById('noResults');
+
+        searchBox.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            let hasVisibleCards = false;
+
+            cards.forEach(card => {
+                const country = card.getAttribute('data-country');
+                const channels = card.getAttribute('data-channels');
+
+                if (country.includes(query) || channels.includes(query)) {
+                    card.style.display = 'block';
+                    hasVisibleCards = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (hasVisibleCards) {
+                noResults.style.display = 'none';
+            } else {
+                noResults.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
